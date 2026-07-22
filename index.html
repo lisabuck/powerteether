@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Tether — Don't Lose Your Day. Send It.</title>
+<meta name="description" content="The $25 shock-absorbing phone tether built for skiers. Kiwi made, ski ready.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0a0a0b;--ink:#141416;--paper:#f4f1ea;--white:#fff;
+    --red:#c0512f;--red-bright:#d56a44;--grey:#8b8b90;--line:rgba(255,255,255,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:linear-gradient(rgba(16,12,11,.80),rgba(16,12,11,.80)),url("hero.jpg");
+    background-size:cover;background-position:center top;background-attachment:fixed;
+    color:var(--white);font-family:'Barlow Condensed',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .rv{opacity:0;transform:translateY(28px);transition:.85s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  .btn{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;border:none;transition:.2s}
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  .navA{display:flex;justify-content:space-between;align-items:center;padding:20px 32px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,10,11,.9);backdrop-filter:blur(8px);z-index:50}
+  .logoA{font-family:'Anton',sans-serif;font-size:24px;letter-spacing:.02em}
+  .logoA b{color:var(--red)}
+  .navA nav{display:flex;gap:26px;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+  .navA nav a{color:#bbb;transition:.2s}.navA nav a:hover{color:#fff}
+  .navA .cart{background:var(--red);color:#fff;padding:9px 18px;font-weight:800;letter-spacing:.1em}
+  @media(max-width:720px){
+    .navA nav{display:none}
+    .heroA img{object-position:72% center}
+    body{background-position:72% top !important;background-attachment:scroll !important}
+    .heroA{min-height:78vh}
+  }
+
+  .heroA{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden}
+  .heroA img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% center}
+  .heroA::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,11,.85) 0%,rgba(10,10,11,.3) 55%,transparent 100%),linear-gradient(0deg,rgba(10,10,11,.9),transparent 60%)}
+  .heroA .wrap{position:relative;z-index:3;padding:0 32px 70px;max-width:1300px;margin:0 auto;width:100%}
+  .ticker{position:absolute;top:0;left:0;right:0;background:var(--red);color:#fff;font-weight:800;font-size:13px;letter-spacing:.2em;text-transform:uppercase;padding:8px 0;white-space:nowrap;overflow:hidden;z-index:4}
+  .ticker span{display:inline-block;animation:scroll 22s linear infinite}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  h1{font-family:'Anton',sans-serif;font-size:clamp(56px,11vw,150px);line-height:.86;text-transform:uppercase;letter-spacing:-.01em}
+  h1 .r{color:var(--red);display:block}
+  .heroA .sub{font-weight:600;font-size:clamp(17px,2.2vw,24px);color:#ddd;margin:18px 0 26px;max-width:480px}
+  .heroA .cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .heroA .shop{background:var(--red);color:#fff;font-size:20px;padding:16px 40px}
+  .heroA .shop:hover{background:var(--red-bright);transform:translateY(-2px)}
+  .heroA .price{font-family:'Space Mono',monospace;font-size:13px;color:#bbb;letter-spacing:.05em}
+
+  .section{padding:90px 32px;max-width:1300px;margin:0 auto}
+  .kicker{font-family:'Space Mono',monospace;font-size:12px;color:var(--red);letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px}
+  h2{font-family:'Anton',sans-serif;font-size:clamp(40px,7vw,96px);line-height:.9;text-transform:uppercase}
+  .lead{font-weight:600;font-size:clamp(18px,2.4vw,28px);color:#ccc;max-width:620px;margin-top:18px;line-height:1.3}
+
+  .problemA{background:var(--red);color:#fff}
+  .problemA h2{color:#fff}.problemA .kicker{color:#0a0a0b}.problemA .lead{color:#fff;opacity:.95}
+  .problemA .big{font-family:'Anton',sans-serif;font-size:clamp(20px,3vw,34px);margin-top:30px;border-top:2px solid rgba(255,255,255,.4);padding-top:24px}
+
+  .prodA{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+  .prodA img{width:100%;border:1px solid var(--line)}
+  .specs{list-style:none;margin-top:30px}
+  .specs li{display:flex;gap:16px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line);font-size:20px;font-weight:600}
+  .specs li b{font-family:'Space Mono',monospace;color:var(--red);font-size:13px;min-width:36px}
+  @media(max-width:820px){.prodA{grid-template-columns:1fr}}
+
+  .compA table{width:100%;border-collapse:collapse;margin-top:36px;font-size:clamp(16px,2vw,22px)}
+  .compA th{text-align:left;font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;padding:18px 14px;font-size:clamp(20px,3vw,30px)}
+  .compA th:last-child{color:var(--red)}
+  .compA td{padding:16px 14px;border-top:1px solid var(--line);font-weight:600}
+  .compA td:first-child{color:#888;text-decoration:line-through;text-decoration-color:rgba(192,81,47,.6)}
+  .compA td:last-child{color:#fff}
+  .compA td:last-child::before{content:"\2713 ";color:var(--red);font-weight:800}
+
+  .socialA .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+  .socialA .tile{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line);background:#161618}
+  .socialA .tile img{width:100%;height:100%;object-fit:cover;transition:.4s}
+  .socialA .tile:hover img{transform:scale(1.06)}
+  .socialA .tile .tt{position:absolute;left:0;right:0;bottom:0;padding:14px;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);font-size:14px;font-weight:600}
+  .socialA .tile .tt .h{font-family:'Space Mono',monospace;font-size:11px;color:var(--red);letter-spacing:.05em}
+  @media(max-width:720px){.socialA .grid{grid-template-columns:repeat(2,1fr)}}
+
+  .ctaA{background:#faf7f3;color:#0a0a0b;text-align:center;padding:110px 32px}
+  .ctaA h2{color:#0a0a0b}.ctaA h2 em{color:var(--red);font-style:normal}
+  .ctaA .shop{background:var(--red);color:#fff;font-size:22px;padding:18px 54px;margin-top:30px}
+  .ctaA .shop:hover{background:#0a0a0b}
+
+  footer{background:rgba(10,10,11,.55);color:#aaa;text-align:center;padding:40px 20px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.05em;border-top:1px solid var(--line)}
+  footer b{color:var(--red)}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<div class="navA">
+  <div class="logoA">POWER <b>TETHER</b><sup style="font-size:11px">&reg;</sup></div>
+  <nav><a href="#">Shop</a><a href="#">How it works</a><a href="#">Reviews</a><a href="#">The Brand</a></nav>
+  <a class="btn cart" href="#">Cart &middot; $25</a>
+</div>
+
+<section class="heroA">
+  <div class="ticker"><span>SHOCK-ABSORBING BUNGEE&nbsp;&nbsp;&bull;&nbsp;&nbsp;KIWI MADE, SKI READY&nbsp;&nbsp;&bull;&nbsp;&nbsp;FREE NZ SHIPPING&nbsp;&nbsp;&bull;&nbsp;&nbsp;$25 SAVES A $2000 PHONE&nbsp;&nbsp;&bull;&nbsp;&nbsp;SHOCK-ABSORBING BUNGEE&nbsp;&nbsp;&bull;&nbsp;&nbsp;KIWI MADE, SKI READY&nbsp;&nbsp;&bull;&nbsp;&nbsp;FREE NZ SHIPPING&nbsp;&nbsp;&bull;&nbsp;&nbsp;$25 SAVES A $2000 PHONE&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span></div>
+  <img src="hero.jpg" alt="Skier holding phone secured by Power Tether">
+  <div class="wrap">
+    <h1>Don't lose<br>your day.<span class="r">Send it.</span></h1>
+    <p class="sub">The phone tether built for skiers, by skiers. One open zipper shouldn't end your season.</p>
+    <div class="cta">
+      <a class="btn shop" href="#">Shop now</a>
+      <span class="price">$25 NZD &middot; ships free</span>
+    </div>
+  </div>
+</section>
+
+<section class="problemA"><div class="section">
+  <div class="kicker">The problem</div>
+  <h2>One open zipper.<br>That's all it takes.</h2>
+  <p class="lead">Phones disappear every single season. Down a lift line. Off a cliff drop. Buried in powder you'll never find again.</p>
+  <div class="big">Power Tether keeps yours attached. Simple as that.</div>
+</div></section>
+
+<section class="section"><div class="prodA">
+  <img src="product.jpg" alt="Power Tether product detail">
+  <div>
+    <div class="kicker">The gear</div>
+    <h2>Small. Strong.<br>Always there.</h2>
+    <ul class="specs">
+      <li><b>01</b> 70cm shock-absorbing bungee</li>
+      <li><b>02</b> Clips straight to your jacket zipper</li>
+      <li><b>03</b> Universal &mdash; fits any phone</li>
+      <li><b>04</b> Stays out of the way 'til you need it</li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="compA"><div class="section">
+  <div class="kicker">Why it's better</div>
+  <h2>Not another lanyard.</h2>
+  <table>
+    <tr><th>The others</th><th>Power Tether</th></tr>
+    <tr><td>Bulky</td><td>Lightweight</td></tr>
+    <tr><td>Neck lanyards</td><td>Zip mounted</td></tr>
+    <tr><td>Fixed length</td><td>Stretch cord</td></tr>
+    <tr><td>Phone-specific</td><td>Universal fit</td></tr>
+  </table>
+</div></section>
+
+<section class="socialA"><div class="section">
+  <div class="kicker">Built by skiers</div>
+  <h2>Real riders. Real days.</h2>
+  <div class="grid">
+    <div class="tile"><img src="hero.jpg" alt="rider"><div class="tt"><div class="h">@finn.sends</div>Caught my phone mid-drop. Sold.</div></div>
+    <div class="tile"><img src="product.jpg" alt="product"><div class="tt"><div class="h">@coronet.crew</div>Best $25 of the season.</div></div>
+    <div class="tile"><img src="hero.jpg" alt="rider"><div class="tt"><div class="h">@alpine.maya</div>Film every run, lose nothing.</div></div>
+  </div>
+</div></section>
+
+<section class="ctaA">
+  <div class="kicker" style="color:var(--red)">Last thing</div>
+  <h2>$25 could save a <em>$2000</em> phone.</h2>
+  <a class="btn shop" href="#">Shop Power Tether</a>
+</section>
+<footer>POWER TETHER&reg; &middot; Kiwi made, ski ready &middot; Tested in <b>New Zealand</b></footer>
+
+<script>
+  document.querySelectorAll('.section, h2, .lead, .specs li').forEach(el=>el.classList.add('rv'));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
